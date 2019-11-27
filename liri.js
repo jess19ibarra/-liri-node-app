@@ -32,11 +32,11 @@ switch (action) {
 // gets song name and puts it into the spotify API
 function spotifyThisSong() {
     console.log(input)
-    if (!input) { input = "The Sign By Ace of Base" }
+    if (!input) { input = "The Sign Ace of Base" }
 
     spotify.search({
         type: 'track',
-        query: value
+        query: input, limit: 1
     }, function (err, data) {
         if (err) {
             return console.log('There was an Error: ' + err);
