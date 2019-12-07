@@ -9,7 +9,7 @@ var moment = require("moment");
 var fs = require("fs");
 
 var action = process.argv[2];
-var value = process.argv.slice(3).join(" ");
+var input = process.argv.slice(3).join(" ");
 
 switch (action) {
     case "spotify-this-song":
@@ -52,7 +52,7 @@ function spotifyThisSong() {
 // gets artist name and finds nearest concert
 function concertThis() {
     axios
-        .get("https://rest.bandsintown.com/artists/" + value + "/events?app_id=codingbootcamp")
+        .get("https://rest.bandsintown.com/artists/" + input + "/events?app_id=codingbootcamp")
         .then(function (response) {
             console.log("Venue Name: " + response.data[0].venue.name);
             console.log("Venue Location: " + response.data[0].venue.city + ", " + response.data[0].venue.country);
@@ -65,11 +65,11 @@ function concertThis() {
 
 // gets movie info from OMDB
 function movieThis() {
-    if (value === "") {
-        value = "Mr. Nobody"
+    if (input === "") {
+        input = "Mr. Nobody"
     };
 
-    var url = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
+    var url = "http://www.omdbapi.com/?t=" + input + "&y=&plot=short&apikey=trilogy";
 
     axios.get(url).then(
         function (response) {
